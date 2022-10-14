@@ -581,6 +581,9 @@
     "/btzj/:category?": [
         "nczitzk"
     ],
+    "/btzj/:search?": [
+        "leontius"
+    ],
     "/bupt/rczp": [
         "nczitzk"
     ],
