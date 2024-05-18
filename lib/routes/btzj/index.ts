@@ -11,6 +11,7 @@ import { art } from '@/utils/render';
 import path from 'node:path';
 import { config } from '@/config';
 import ConfigNotFoundError from '@/errors/types/config-not-found';
+import logger from '@/utils/logger';
 const allowDomain = new Set(['2btjia.com', '88btbtt.com', 'btbtt15.com', 'btbtt20.com']);
 
 export const route: Route = {
@@ -92,6 +93,46 @@ async function handler(ctx) {
     });
 
     const $ = load(response.data);
+
+    if (currentUrl.indexOf('thread') !== -1) {
+        logger.info(currentUrl + ' url has torrent detail.');
+
+        const results = [];
+        $('#body div')
+            .find('.post_table')
+            .toArray()
+            .map((itm) => {
+                const attachlist = $(itm);
+                const torrents = attachlist.find('.attachlist').find('a');
+                if (torrents.length > 0) {
+                    torrents.each((i, t) => {
+                        const torrentName = $(t).text();
+                        const torrentLink = `${rootUrl}/${$(t)
+                            .attr('href')
+                            .replace(/^attach-dialog/, 'attach-download')}`;
+
+                        results.push({
+                            title: torrentName,
+                            description: torrentName,
+                            enclosure_type: 'application/x-bittorrent',
+                            enclosure_url: torrentLink,
+                        });
+                    });
+                }
+                return null;
+            });
+
+        return {
+            title: `${$('#menu, #threadtype')
+                .find('.checked')
+                .toArray()
+                .map((c) => $(c).text())
+                .filter((c) => c !== '全部')
+                .join('|')} - BT之家`,
+            link: currentUrl,
+            item: results,
+        };;
+    }
 
     $('.bg2').prevAll('table').remove();
 
