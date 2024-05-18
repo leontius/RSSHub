@@ -94,7 +94,7 @@ async function handler(ctx) {
 
     const $ = load(response.data);
 
-    if (currentUrl.indexOf('thread') !== -1) {
+    if (currentUrl.includes('thread')) {
         logger.info(currentUrl + ' url has torrent detail.');
 
         const results = [];
@@ -131,7 +131,7 @@ async function handler(ctx) {
                 .join('|')} - BT之家`,
             link: currentUrl,
             item: results,
-        };;
+        };
     }
 
     $('.bg2').prevAll('table').remove();
