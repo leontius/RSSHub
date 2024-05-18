@@ -12,7 +12,7 @@ import path from 'node:path';
 import { config } from '@/config';
 import ConfigNotFoundError from '@/errors/types/config-not-found';
 import logger from '@/utils/logger';
-const allowDomain = new Set(['2btjia.com', '88btbtt.com', 'btbtt15.com', 'btbtt20.com']);
+const allowDomain = new Set(['2btjia.com', '88btbtt.com', 'btbtt15.com', 'btbtt11.com', 'btbtt16.com', 'btbtt20.com']);
 
 export const route: Route = {
     path: '/:category?',
