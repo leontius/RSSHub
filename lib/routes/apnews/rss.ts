@@ -1,12 +1,13 @@
-import { Route } from '@/types';
+import { Route, ViewType } from '@/types';
 import parser from '@/utils/rss-parser';
 import { fetchArticle } from './utils';
 const HOME_PAGE = 'https://apnews.com';
 
 export const route: Route = {
     path: '/rss/:category?',
-    categories: ['traditional-media', 'popular'],
+    categories: ['traditional-media'],
     example: '/apnews/rss/business',
+    view: ViewType.Articles,
     parameters: {
         category: {
             description: 'Category from the first segment of the corresponding site, or `index` for the front page.',
@@ -37,7 +38,7 @@ async function handler(ctx) {
     const url = `${HOME_PAGE}/${rss}.rss`;
     const res = await parser.parseURL(url);
 
-    const items = await Promise.all(res.items.map((item) => fetchArticle(item)));
+    const items = ctx.req.query('fulltext') === 'true' ? await Promise.all(res.items.map((item) => fetchArticle(item))) : res;
 
     return {
         ...res,

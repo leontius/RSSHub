@@ -3,7 +3,7 @@ import cache from '@/utils/cache';
 import { parseDate } from '@/utils/parse-date';
 import timezone from '@/utils/timezone';
 import { load } from 'cheerio';
-import { ofetch } from 'ofetch';
+import ofetch from '@/utils/ofetch';
 
 export const route: Route = {
     path: '/:category/:type?',
@@ -19,10 +19,10 @@ export const route: Route = {
         },
     ],
     description: `
-:::tip
+::: tip
 存在**二级分类**的**一级分类**不能单独当作参数，如：\`/cccfna/hangyezixun\`
 :::
-    
+
 文章的目录分级如下:
 
 - shanghuidongtai（商会通知）

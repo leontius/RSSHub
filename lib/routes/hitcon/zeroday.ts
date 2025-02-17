@@ -29,8 +29,8 @@ export const route: Route = {
     },
     handler,
     description: `| 缺省   | all  | closed | disclosed | patching |
-  | ------ | ---- | ------ | --------- | -------- |
-  | 活動中 | 全部 | 關閉   | 公開      | 修補中   |`,
+| ------ | ---- | ------ | --------- | -------- |
+| 活動中 | 全部 | 關閉   | 公開      | 修補中   |`,
 };
 
 const baseUrl = 'https://zeroday.hitcon.org/vulnerability';
@@ -101,7 +101,7 @@ async function handler(ctx: Context): Promise<Data> {
         });
 
     return {
-        title: status ? titleMap[status] ?? 'ZeroDay' : '活動中',
+        title: status ? (titleMap[status] ?? 'ZeroDay') : '活動中',
         link: url,
         item: items,
         image: 'https://zeroday.hitcon.org/images/favicon/favicon.png',
