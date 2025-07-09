@@ -29678,8 +29678,7 @@ export default {
       "/blog": {
         "path": "/blog",
         "categories": [
-          "new-media",
-          "popular"
+          "new-media"
         ],
         "example": "/deepmind/blog",
         "parameters": {},
@@ -44226,7 +44225,8 @@ export default {
       "/miit/wjgs": {
         "path": "/miit/wjgs",
         "categories": [
-          "government"
+          "government",
+          "popular"
         ],
         "example": "/gov/miit/wjgs",
         "parameters": {},
