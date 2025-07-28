@@ -25680,8 +25680,7 @@ export default {
           "/tuwen/:type?"
         ],
         "categories": [
-          "social-media",
-          "popular"
+          "social-media"
         ],
         "example": "/coolapk/tuwen",
         "parameters": {
@@ -32200,7 +32199,8 @@ export default {
       "/people/:userid/status/:routeParams?": {
         "path": "/people/:userid/status/:routeParams?",
         "categories": [
-          "social-media"
+          "social-media",
+          "popular"
         ],
         "view": 1,
         "example": "/douban/people/75118396/status",
